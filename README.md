@@ -2,16 +2,19 @@
 
 当前重点阅读 **Agent Skill 的恶意检测**：关注技能说明、代码与配置如何共同形成恶意行为，以及检测方法怎样建立证据、控制误报并适应真实生态。
 
-**7 篇精读笔记 · 46 项既往背景文献与工具 · 时间线与关系图**
+**8 篇精读笔记 · 46 项既往背景文献与工具 · 时间线与关系图**
 
-## 当前重点：Agent Skill 恶意检测
+## 当前重点：Agent Skill 恶意检测与相关防御
 
 | 论文 | 会议 / 阅读版本 | 研究主题 | 阅读关注点 |
 | --- | --- | --- | --- |
 | [MalSkills](malskills/README.md) | ASE 2026录用；arXiv v2 | 神经符号检测、跨文件依赖、恶意技能 | 如何把说明、配置与脚本中的分散线索连成恶意行为证据？ |
 | [Malicious Agent Skills](malicious-agent-skills/README.md) | USENIX Security 2026 | 行为验证、恶意标签、生态测量 | 如何从可疑模式确认故意恶意，并刻画攻击策略？ |
+| [AttriGuard](attriguard/README.md) | USENIX Security 2026 | 间接提示注入、运行时防御、工具调用归因 | 削弱外部内容的控制作用后，工具调用是否仍由用户任务支持？ |
 
-后续笔记优先采用「**标题作者、论文代码与关键词 → 背景局限 → 切入与创新 → 技术手段 → 实验与结论**」的故事线，重点解释创新如何实现，尽量贴近原文并保留出处；只保留核心框架图。
+后续笔记优先采用「**标题作者、论文代码与关键词 → 背景局限 → 切入与创新 → 技术手段 → 实验与结论**」的故事线，重点解释创新如何实现，尽量贴近原文并保留出处；优先保留核心框架图。
+
+**2026-11-04 更新**：更新 MalSkills、Malicious Agent Skills 图文笔记，并新增 AttriGuard，补充技术细节、实验解读与个人思考。
 
 ### 方向调整说明 · 2026-10-25
 
@@ -37,7 +40,7 @@
 
 ## 阅读路径
 
-围绕当前方向，可先读 **[Malicious Agent Skills](malicious-agent-skills/README.md)**，理解恶意标签怎样经行为核验建立；再读 **[MalSkills](malskills/README.md)**，理解「敏感操作提取 → 依赖图 → 上下文推理」。后续重点核对检测证据、数据标签、误报与漏报、跨文件覆盖和生态评估。
+围绕当前方向，可先读 **[Malicious Agent Skills](malicious-agent-skills/README.md)**，理解恶意标签怎样经行为核验建立；再读 **[MalSkills](malskills/README.md)**，理解「敏感操作提取 → 依赖图 → 上下文推理」。随后可读 **[AttriGuard](attriguard/README.md)**，了解工具执行前的运行时归因防御。三篇分别覆盖生态测量、技能包检测和行动验证；AttriGuard 的主要对象是间接提示注入，并非专门的 Skill 扫描器。后续重点核对检测证据、数据标签、误报与漏报、跨文件覆盖和生态评估。
 
 补充既往越狱基础时，可通过[背景表与关系图](jailbreak-background/README.md)建立全貌：**Causal Analyst** 关注提示特征与结果，**TRAP** 关注策略选择，**Best-of-N** 关注随机采样与预算，**DUALBREACH** 关注护栏与模型两道防线。
 
