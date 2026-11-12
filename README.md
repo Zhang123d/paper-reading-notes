@@ -2,12 +2,13 @@
 
 当前重点阅读 **Agent Skill 的恶意检测**：关注技能说明、代码与配置如何共同形成恶意行为，以及检测方法怎样建立证据、控制误报并适应真实生态。
 
-**9 篇精读笔记 · 46 项既往背景文献与工具 · 时间线与关系图**
+**10 篇精读笔记 · 46 项既往背景文献与工具 · 时间线与关系图**
 
 ## 当前重点：Agent Skill 恶意检测与相关防御
 
 | 论文 | 会议 / 阅读版本 | 研究主题 | 阅读关注点 |
 | --- | --- | --- | --- |
+| [MalSkillBench](malskillbench/README.md) | arXiv v3，2026 | 运行验证、攻击分类、检测器评测 | 恶意标签怎样通过沙箱核验？真实样本的构成如何改变检测器排名？ |
 | [MaliciousSkillBench](malicious-skill-bench/README.md) | arXiv v1，2026 | 数据集整合、结构去重、跨来源评测 | 换到未见来源后，恶意召回与正常误报如何变化？ |
 | [MalSkills](malskills/README.md) | ASE 2026录用；arXiv v2 | 神经符号检测、跨文件依赖、恶意技能 | 如何把说明、配置与脚本中的分散线索连成恶意行为证据？ |
 | [Malicious Agent Skills](malicious-agent-skills/README.md) | USENIX Security 2026 | 行为验证、恶意标签、生态测量 | 如何从可疑模式确认故意恶意，并刻画攻击策略？ |
@@ -41,7 +42,7 @@
 
 ## 阅读路径
 
-围绕当前方向，可先读 **[Malicious Agent Skills](malicious-agent-skills/README.md)**，理解恶意标签怎样经行为核验建立。再读 **[MaliciousSkillBench](malicious-skill-bench/README.md)**，看样本去重、模板复用和来源隔离怎样影响检测结果。**[MalSkills](malskills/README.md)** 进一步讨论如何用依赖图连接跨文件证据，**[AttriGuard](attriguard/README.md)** 则讨论如何在工具执行前验证行动来源。
+围绕当前方向，可先读 **[Malicious Agent Skills](malicious-agent-skills/README.md)**，了解真实生态中的恶意行为和标签证据。接着读 Guo 等人的 **[MalSkillBench](malskillbench/README.md)**，看生成样本如何通过沙箱验证，以及样本构成如何改变检测结果。Wang 等人的 **[MaliciousSkillBench](malicious-skill-bench/README.md)** 进一步讨论多来源整合、模板复用和来源隔离。**[MalSkills](malskills/README.md)** 讨论如何用依赖图连接跨文件证据，**[AttriGuard](attriguard/README.md)** 则关注工具执行前的行动归因。
 
 补充既往越狱基础时，可通过[背景表与关系图](jailbreak-background/README.md)建立全貌：**Causal Analyst** 关注提示特征与结果，**TRAP** 关注策略选择，**Best-of-N** 关注随机采样与预算，**DUALBREACH** 关注护栏与模型两道防线。
 
