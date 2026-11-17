@@ -2,12 +2,13 @@
 
 当前重点阅读 **Agent Skill 的恶意检测**：关注技能说明、代码与配置如何共同形成恶意行为，以及检测方法怎样建立证据、控制误报并适应真实生态。
 
-**11 篇精读笔记 · 46 项既往背景文献与工具 · 时间线与关系图**
+**12 篇精读笔记 · 46 项既往背景文献与工具 · 时间线与关系图**
 
 ## 当前重点：Agent Skill 恶意检测与相关防御
 
 | 论文 | 会议 / 阅读版本 | 研究主题 | 核心贡献 | 阅读关注点 |
 | --- | --- | --- | --- | --- |
+| [Seeing Is Not Screening](seeing-not-screening/README.md) | NeurIPS 2026（作者主页）；arXiv v1 | 多模态隐藏指令、跨模态分析、行为链推演 | 构造文档与图片协同的隐藏指令攻击，并提出多模态分析与行为链推演的扫描方法。 | 扫描器是否覆盖 Agent 能理解的全部材料？推演风险与实际执行证据有何区别？ |
 | [SkillSieve](skillsieve/README.md) | arXiv v3，2026 | 分层检测、语义分析、多模型复核 | 将静态筛查、四维语义分析和多模型复核组成分层检测流程，按风险分配分析成本。 | 如何减少误报和模型调用，同时避免入口漏报与复核过度放行？ |
 | [MalSkillBench](malskillbench/README.md) | arXiv v3，2026 | 运行验证、攻击分类、检测器评测 | 构建带标签的恶意 Skill 数据集，提供可复用的样本生成与沙箱验证流程。 | 恶意标签怎样通过沙箱核验？真实样本的构成如何改变检测器排名？ |
 | [MaliciousSkillBench](malicious-skill-bench/README.md) | arXiv v1，2026 | 数据集整合、结构去重、跨来源评测 | 整合并去重多个来源的 Skill，建立可按恶意模板和来源分别隔离的评测基准。 | 换到未见来源后，恶意召回与正常误报如何变化？ |
@@ -17,7 +18,7 @@
 
 后续笔记优先采用「**标题作者、论文代码与关键词 → 背景局限 → 切入与创新 → 技术手段 → 实验与结论**」的故事线，重点解释创新如何实现，尽量贴近原文并保留出处；优先保留核心框架图。
 
-**2026-11-17 更新**：新增 SkillSieve，梳理静态筛查、四项语义分析与多模型复核，重点区分检测效果、误报代价和成本统计口径，并补充公开数据的复现边界。
+**2026-11-17 更新**：新增 Seeing Is Not Screening，解释 SkillCamo 的跨模态隐藏指令与 ExecScan 的行为链推演，区分扫描放行与实际攻击成功，并保留误报及统计口径限制。新增 SkillSieve，梳理静态筛查、四项语义分析与多模型复核，重点区分检测效果、误报代价和成本统计口径，并补充公开数据的复现边界。
 
 **2026-11-04 更新**：更新 MalSkills、Malicious Agent Skills 图文笔记，并新增 AttriGuard，补充技术细节、实验解读与个人思考。
 
@@ -48,6 +49,8 @@
 围绕当前方向，可先读 **[Malicious Agent Skills](malicious-agent-skills/README.md)**，了解真实生态中的恶意行为和标签证据。接着读 Guo 等人的 **[MalSkillBench](malskillbench/README.md)**，看生成样本如何通过沙箱验证，以及样本构成如何改变检测结果。Wang 等人的 **[MaliciousSkillBench](malicious-skill-bench/README.md)** 进一步讨论多来源整合、模板复用和来源隔离。**[MalSkills](malskills/README.md)** 讨论如何用依赖图连接跨文件证据，**[AttriGuard](attriguard/README.md)** 则关注工具执行前的行动归因。
 
 接着可读 **[SkillSieve](skillsieve/README.md)**，比较安装前的分层检测如何分配模型调用、减少误报，以及入口漏报和复核过度放行的代价。
+
+**[Seeing Is Not Screening](seeing-not-screening/README.md)** 将问题扩展到图片等资源：扫描器是否看到完整指令，以及多模态分析与模型推演能否弥补检测盲区。可与前述分层检测和沙箱验证方法对照阅读。
 
 补充既往越狱基础时，可通过[背景表与关系图](jailbreak-background/README.md)建立全貌：**Causal Analyst** 关注提示特征与结果，**TRAP** 关注策略选择，**Best-of-N** 关注随机采样与预算，**DUALBREACH** 关注护栏与模型两道防线。
 
